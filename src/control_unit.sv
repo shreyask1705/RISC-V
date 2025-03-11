@@ -16,6 +16,7 @@ module control_unit (
     logic [6:0] opcode; 
     logic [2:0] funct3;
     logic [6:0] funct7;
+    logic [1:0] ALUOp;
 
     always_comb begin
         // Default values
@@ -100,4 +101,35 @@ module control_unit (
             default: ; // Default case, no operation
         endcase
     end
+    
+    always_comb begin
+        opcode = instruction[6:0];
+        funct3 = instruction[14:12];
+        funct7 = instruction[31:25];
+
+        case (ALUOp)
+            2'b00: begin
+                ALUControl = 3'b000; // ADD
+            end
+            2'b01: begin
+                ALUControl = 3'b001; // SUB
+            end
+            2'b10 : begin
+                if (funct3 == 3'b000 && (funct7[6:5] == 2'b00 || funct7[6:5] == 2'b01 || funct7[6:5] == 2'b10)) begin
+                    ALUControl = 3'b000; // ADD
+                end else if (func3 == 3'b000 && funct7[6:5] == 2'b11) begin
+                    ALUControl = 3'b001; // SUB
+                end else if (func3 == 3'b010) begin
+                    ALUControl = 3'b101; // SLT
+                end else if (func3 == 3'b110) begin
+                    ALUControl = 3'b011; // OR
+                end else if (func3 == 3'b111) begin
+                    ALUControl = 3'b010 // AND
+                end else begin
+                    ALUControl = 3'b000; // ADD
+                end
+            end
+        endcase
+    end
+
 endmodule
