@@ -30,5 +30,5 @@ module immediate (
             immediate_extended_reg = {12'b0000_0000_0000, immediate_reg};
         end
     end
-
+    assign immediate_extended = immediate_extended_reg;
 endmodule

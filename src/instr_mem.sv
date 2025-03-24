@@ -11,5 +11,6 @@ module instruction_memory (
     initial begin
         $readmemh("sim/instructions.txt", mem);
     end
-
+    assign instr = {mem[pc], mem[pc+1], mem[pc+2], mem[pc+3]};
+    
 endmodule

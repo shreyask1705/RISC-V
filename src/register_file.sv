@@ -52,7 +52,7 @@ module register_file (
             registers[30] <= 32'h30;
             registers[31] <= 32'h31;
         end else begin
-            if (write_enable) begin
+            if (write_enable && rd_addr != 5'd0) begin
                 registers[rd_addr] <= write_data;
             end else begin
                 registers[rd_addr] <= registers[rd_addr];
