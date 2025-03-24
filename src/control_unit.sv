@@ -114,21 +114,43 @@ module control_unit (
             2'b01: begin
                 ALUControl = 3'b001; // SUB
             end
-            2'b10 : begin
-                if (funct3 == 3'b000 && (funct7[6:5] == 2'b00 || funct7[6:5] == 2'b01 || funct7[6:5] == 2'b10)) begin
-                    ALUControl = 3'b000; // ADD
-                end else if (func3 == 3'b000 && funct7[6:5] == 2'b11) begin
-                    ALUControl = 3'b001; // SUB
-                end else if (func3 == 3'b010) begin
-                    ALUControl = 3'b101; // SLT
-                end else if (func3 == 3'b110) begin
-                    ALUControl = 3'b011; // OR
-                end else if (func3 == 3'b111) begin
-                    ALUControl = 3'b010 // AND
-                end else begin
-                    ALUControl = 3'b000; // ADD
-                end
+            default : begin
+                // if (funct3 == 3'b000 && (funct7[6:5] == 2'b00 || funct7[6:5] == 2'b01 || funct7[6:5] == 2'b10)) begin
+                //     ALUControl = 3'b000; // ADD
+                // end else if (func3 == 3'b000 && funct7[6:5] == 2'b11) begin
+                //     ALUControl = 3'b001; // SUB
+                // end else if (func3 == 3'b010) begin
+                //     ALUControl = 3'b101; // SLT
+                // end else if (func3 == 3'b110) begin
+                //     ALUControl = 3'b011; // OR
+                // end else if (func3 == 3'b111) begin
+                //     ALUControl = 3'b010 // AND
+                // end else begin
+                //     ALUControl = 3'b000; // ADD
+                // end
+                case (funct3) 
+                    3'b000: begin
+                        if (funct7[6:5] == 2'b00 || funct7[6:5] == 2'b01 || funct7[6:5] == 2'b10) begin
+                            ALUControl = 3'b000; // ADD
+                        end else if (funct7[6:5] == 2'b11) begin
+                            ALUControl = 3'b001; // SUB
+                        end
+                    end
+                    3'b010: begin
+                        ALUControl = 3'b101; // SLT
+                    end
+                    3'b110: begin
+                        ALUControl = 3'b011; // OR
+                    end
+                    3'b111: begin
+                        ALUControl = 3'b010; // AND
+                    end
+                    default: begin
+                        ALUControl = 3'b000; // ADD
+                    end
+                endcase
             end
+
         endcase
     end
 
