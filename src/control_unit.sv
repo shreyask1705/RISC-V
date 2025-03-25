@@ -12,7 +12,7 @@ module control_unit (
     output  logic        Jump
 
 );
-
+    // Internal Registers
     logic [6:0] opcode; 
     logic [2:0] funct3;
     logic [6:0] funct7;
