@@ -16,9 +16,9 @@ module riscv_processor_tb;
         // Initialize signals
         clk = 0;
         reset_n = 0;
-        $dumpfile("waveforms.vcd");
+        $dumpfile("risc_waveforms.vcd");
         $dumpvars(0, riscv_processor_tb);  
-        // Reset sequence
+        // Reset Sequence
         #10 reset_n = 1;
         
         // Run for some cycles

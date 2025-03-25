@@ -12,6 +12,7 @@ module program_counter (
 );
     //`include "control_unit.sv"
     //`include "immediate.sv"
+   
     reg [31:0] pc;
 
     always_ff@(posedge clk) begin
