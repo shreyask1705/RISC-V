@@ -1,6 +1,6 @@
 module riscv_processor (
-    input logic clk,
-    input logic reset_n
+    input wire clk,
+    input wire reset_n
 );
     // Program Counter
     logic [31:0] pc, pc_next;
@@ -35,7 +35,7 @@ module riscv_processor (
         .MemWrite(MemWrite),
         .ALUControl(ALUControl),
         .ImmSrc(ImmSrc),
-        .ALUsrc(ALUSrc),
+        .ALUSrc(ALUSrc),
         .RegWrite(RegWrite),
         .Branch(Branch),
         .Jump(Jump)

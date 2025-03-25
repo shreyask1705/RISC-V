@@ -6,7 +6,7 @@ module control_unit (
     output  logic        MemWrite,
     output  logic [2:0]  ALUControl,
     output  logic [1:0]  ImmSrc,
-    output  logic        ALUsrc,
+    output  logic        ALUSrc,
     output  logic        RegWrite, 
     output  logic        Branch,
     output  logic        Jump
@@ -23,7 +23,7 @@ module control_unit (
         RegWrite = 0;
         ALUSrc = 0;
         ImmSrc = 0;
-        ALUControl = 0;
+        //ALUControl = 0;
         MemWrite = 0;
         ResultSrc = 0;
         PCSrc = zero_flg ^ Branch;

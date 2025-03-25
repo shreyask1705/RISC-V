@@ -5,9 +5,9 @@ module program_counter (
     input wire [31:0] pc_in,
     input wire reset_n,
     output wire [31:0] pc_out,
-    input logic PCSrc,
-    input logic [31:0] immediate_extended,
-    input logic [1:0] ImmSrc
+    input wire PCSrc,
+    input wire [31:0] immediate_extended,
+    input wire [1:0] ImmSrc
 
 );
     //`include "control_unit.sv"
