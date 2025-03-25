@@ -22,7 +22,7 @@ module riscv_processor_tb;
         #10 reset_n = 1;
         
         // Run for some cycles
-        #200;
+        #20000;
         
         // End simulation
         $stop;
