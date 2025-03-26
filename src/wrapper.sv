@@ -11,7 +11,10 @@ module riscv_processor (
         .clk(clk),
         .pc_in(pc_next),
         .reset_n(reset_n),
-        .pc_out(pc)
+        .pc_out(pc),
+        .PCSrc(PCSrc),
+        .immediate_extended(immediate_extended),
+        .ImmSrc(ImmSrc)
     );
     
     // Instruction Memory
