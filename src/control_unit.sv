@@ -13,10 +13,17 @@ module control_unit (
 
 );
     // Internal Registers and Wires
+
     logic [6:0] opcode; 
     logic [2:0] funct3;
     logic [6:0] funct7;
     logic [1:0] ALUOp;
+
+    always_comb begin
+        opcode = instruction[6:0];
+        funct3 = instruction[14:12];
+        funct7 = instruction[31:25];
+    end
 
     always_comb begin
         // Default values
@@ -103,9 +110,7 @@ module control_unit (
     end
     
     always_comb begin
-        opcode = instruction[6:0];
-        funct3 = instruction[14:12];
-        funct7 = instruction[31:25];
+       
 
         case (ALUOp)
             2'b00: begin
