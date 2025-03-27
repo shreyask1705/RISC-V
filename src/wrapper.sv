@@ -64,7 +64,7 @@ module riscv_processor (
         .rs1_addr(rs1_addr),
         .rs2_addr(rs2_addr),
         .rd_addr(rd_addr),
-        .write_data(alu_result),
+        .write_data(write_data),
         .write_enable(RegWrite),
         .rs1_data(rs1_data),
         .rs2_data(rs2_data)
@@ -91,6 +91,13 @@ module riscv_processor (
         .write_data(rs2_data),
         .write_enable(MemWrite),
         .read_data(read_data)
+    );
+
+    mux mux_inst (
+        .select(ResultSrc),
+        .operand1(alu_result),
+        .operand2(read_data),
+        .result(write_data)
     );
     
     // PC Logic
