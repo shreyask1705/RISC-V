@@ -11,10 +11,8 @@ module riscv_processor (
         .clk(clk),
         .pc_in(pc_next),
         .reset_n(reset_n),
-        .pc_out(pc),
-        .PCSrc(PCSrc),
-        .immediate_extended(immediate_extended),
-        .ImmSrc(ImmSrc)
+        .pc_out(pc)
+    
     );
     
     // Instruction Memory
@@ -52,7 +50,7 @@ module riscv_processor (
     );
     
     // Register File
-    logic [31:0] rs1_data, rs2_data; //write_data;
+    logic [31:0] rs1_data, rs2_data, write_data;
     logic [4:0] rs1_addr, rs2_addr, rd_addr;
     assign rs1_addr = instruction[19:15];
     assign rs2_addr = instruction[24:20];
