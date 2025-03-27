@@ -81,6 +81,17 @@ module riscv_processor (
         .result(alu_result),
         .zero(zero)
     );
+
+    // Data Memory
+    logic [31:0] read_data;
+    data_mem DM (
+        .clk(clk),
+        .reset_n(reset_n),
+        .addr(alu_result),
+        .write_data(rs2_data),
+        .write_enable(MemWrite),
+        .read_data(read_data)
+    );
     
     // PC Logic
     assign pc_next = (PCSrc) ? pc + immediate_extended : pc + 4;
