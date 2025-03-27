@@ -93,12 +93,7 @@ module riscv_processor (
         .read_data(read_data)
     );
 
-    mux mux_inst (
-        .select(ResultSrc),
-        .operand1(alu_result),
-        .operand2(read_data),
-        .result(write_data)
-    );
+    assign write_data = (ResultSrc == 2'b00) ? alu_result : read_data;
     
     // PC Logic
     assign pc_next = (PCSrc) ? pc + immediate_extended : pc + 4;
