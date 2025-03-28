@@ -94,6 +94,6 @@ module riscv_processor (
     assign write_data = (ResultSrc == 2'b00) ? alu_result : read_data;
     
     // PC Logic
-    assign pc_next = (PCSrc) ? pc + immediate_extended : pc + 4;
+    assign pc_next = (PCSrc) ? pc + immediate_extended : pc + 1;
     
 endmodule

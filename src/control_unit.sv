@@ -88,7 +88,7 @@ module control_unit (
                 ALUSrc = 0;
                 MemWrite = 0;
                 ResultSrc = 1'bX; // Should be XX..Figure out the Implementation
-                PCSrc = 1;
+                PCSrc = (zero_flg) ? 1'b1 : 1'b0; 
                 ALUOp = 2'b01;
                 Branch = 1;
                 Jump = 0;   
