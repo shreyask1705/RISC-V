@@ -9,7 +9,7 @@ module data_mem(
     output [31:0] read_data
 );
 
-    logic [31:0] memory [0:1023];
+    logic [31:0] memory [0:31];
 
     assign read_data = memory[addr];
 

@@ -6,7 +6,7 @@ module instruction_memory (
     output wire [31:0] instr     
 );
 
-    logic [31:0] mem [0:63];  // Instruction memory (32 words of 8 bits each)
+    logic [31:0] mem [0:20];  // Instruction memory (32 words of 8 bits each)
 
     initial begin
         $readmemh("C:/Users/shrey/OneDrive/Documents/Projects/RISC-V/sim/instructions.txt", mem);

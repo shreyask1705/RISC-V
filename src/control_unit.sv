@@ -59,7 +59,7 @@ module control_unit (
                 ALUOp = 2'b10;
                 Branch = 0;
                 Jump = 0;   
-                ImmSrc = 2'bXX; // Should be XX .... Figure out the Implementation
+                ImmSrc = 2'b00; // Should be XX .... Figure out the Implementation
             end
             7'b0000011: begin // Load (LW)
                 RegWrite = 1;
@@ -76,7 +76,7 @@ module control_unit (
                 RegWrite = 0;
                 ALUSrc = 1;
                 MemWrite = 1;
-                ResultSrc = 1'bX; // Should be XX..Figure out the Implementation
+                ResultSrc = 1'b0; // Should be XX..Figure out the Implementation
                 PCSrc = zero_flg ^ Branch;
                 ALUOp = 2'b10;
                 Branch = 0;
@@ -87,7 +87,7 @@ module control_unit (
                 RegWrite = 0;
                 ALUSrc = 0;
                 MemWrite = 0;
-                ResultSrc = 1'bX; // Should be XX..Figure out the Implementation
+                ResultSrc = 1'b0; // Should be XX..Figure out the Implementation
                 PCSrc = (zero_flg) ? 1'b1 : 1'b0; 
                 ALUOp = 2'b01;
                 Branch = 1;
@@ -96,11 +96,11 @@ module control_unit (
             end
             7'b1101111: begin // Jump (JAL)
                 RegWrite = 1;
-                ALUSrc = 1'bX; // Should be XX..Figure out the Implementation
+                ALUSrc = 1'b0; // Should be XX..Figure out the Implementation
                 MemWrite = 0;
                 ResultSrc = 2'b10;
                 PCSrc = zero_flg ^ Branch;
-                ALUOp = 2'bXX; // Should be XX..Figure out the Implementation
+                ALUOp = 2'b00; // Should be XX..Figure out the Implementation
                 Branch = 0;
                 Jump = 1;   
                 ImmSrc = 2'b11;
