@@ -33,7 +33,7 @@ module control_unit (
         //ALUControl = 0;
         MemWrite = 0;
         ResultSrc = 0;
-        PCSrc = zero_flg ^ Branch;
+        PCSrc = zero_flg & Branch;
         Branch = 0;
         Jump = 0;
         //ALUOp = 3'b000;
@@ -44,7 +44,7 @@ module control_unit (
                 ALUSrc = 0;
                 MemWrite = 0;
                 ResultSrc = 0;
-                PCSrc = zero_flg ^ Branch;
+                PCSrc = zero_flg & Branch;
                 ALUOp = 2'b10;
                 Branch = 0;
                 Jump = 0;   
@@ -55,7 +55,7 @@ module control_unit (
                 ALUSrc = 1;
                 MemWrite = 0;
                 ResultSrc = 0;
-                PCSrc = zero_flg ^ Branch;
+                PCSrc = zero_flg & Branch;
                 ALUOp = 2'b10;
                 Branch = 0;
                 Jump = 0;   
@@ -66,7 +66,7 @@ module control_unit (
                 ALUSrc = 1;
                 MemWrite = 0;
                 ResultSrc = 1;
-                PCSrc = zero_flg ^ Branch;
+                PCSrc = zero_flg & Branch;
                 ALUOp = 2'b00;
                 Branch = 0;
                 Jump = 0;   
@@ -77,7 +77,7 @@ module control_unit (
                 ALUSrc = 1;
                 MemWrite = 1;
                 ResultSrc = 1'b0; // Should be XX...Kept it as 0 for now
-                PCSrc = zero_flg ^ Branch;
+                PCSrc = zero_flg & Branch;
                 ALUOp = 2'b10;
                 Branch = 0;
                 Jump = 0;   
@@ -99,7 +99,7 @@ module control_unit (
                 ALUSrc = 1'b0; // Should be XX..Kept it as 0 for now
                 MemWrite = 0;
                 ResultSrc = 2'b10;
-                PCSrc = zero_flg ^ Branch;
+                PCSrc = zero_flg & Branch;
                 ALUOp = 2'b00; // Should be XX..Kept it as 0 for now
                 Branch = 0;
                 Jump = 1;   
